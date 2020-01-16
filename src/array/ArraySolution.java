@@ -2,6 +2,8 @@ package array;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ArraySolution {
     public static void main(String[] args) {
@@ -180,6 +182,7 @@ public class ArraySolution {
     }
 
 
+
     public int longestCommonSubsequence(String text1, String text2) {
         if("".equals(text1) || "".equals(text2) || text1 == null || text2 == null) {
             return 0;
@@ -194,6 +197,25 @@ public class ArraySolution {
             }
         }
         return dp[m][n];
+    }
+
+    
+    /**
+     *
+     */
+    public int[] twoSum(int[] nums, int target) {
+        int [] result = new int[2];
+        Map<Integer, Integer> indexMap = new HashMap<>();
+        for(int i = 0; i<nums.length; i++){
+            if (indexMap.containsKey(target-nums[i])){
+                result[0] = indexMap.get(target-nums[i]);
+                result[1] = i;
+                return result;
+            }else {
+                indexMap.put(nums[i], i);
+            }
+        }
+        return null;
     }
 
 }
